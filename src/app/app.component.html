@@ -1,12 +1,13 @@
-<div class="app-container">
-  <app-header [previewMode]="previewMode()" (previewModeChange)="previewMode.set($event)" (clone)="onClone()"></app-header>
-  <main class="main-content">
-    <app-toolbox></app-toolbox>
-    <app-canvas
-      [previewMode]="previewMode()"
-      [(items)]="items"
-      [(selectedElement)]="selectedElement"
-    ></app-canvas>
-    <app-properties-panel [(element)]="selectedElement"></app-properties-panel>
-  </main>
-</div>
+<div class="container">
+    <app-header [(previewMode)]="previewMode" />
+    <main class="main-content">
+      @if (!previewMode()) {
+        <app-toolbox />
+      }
+      <app-canvas [(items)]="items" [(selectedElement)]="selectedElement" [previewMode]="previewMode()"/>
+      @if (selectedElement()) {
+        <app-properties-panel [(element)]="selectedElement" />
+      }
+    </main>
+  </div>
+  

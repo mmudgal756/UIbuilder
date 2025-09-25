@@ -23,20 +23,4 @@ export class AppComponent {
   previewMode = signal(false);
   items = signal<Item[]>([]);
   selectedElement = signal<Item | null>(null);
-
-  onClone() {
-    if (this.selectedElement()) {
-      const newElement: Item = {
-        ...this.selectedElement()!,
-        id: Date.now().toString(),
-        style: {
-          ...this.selectedElement()!.style,
-          left: `${parseInt(String(this.selectedElement()!.style['left'] ?? '0')) + 20}px`,
-          top: `${parseInt(String(this.selectedElement()!.style['top'] ?? '0')) + 20}px`,
-        }
-      };
-      this.items.update(items => [...items, newElement]);
-      this.selectedElement.set(newElement);
-    }
-  }
 }

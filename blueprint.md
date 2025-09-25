@@ -70,10 +70,15 @@ This is a drag-and-drop UI builder application created with Angular. It allows u
     - **Typography**: Applied Material Design typography to the application.
     - **Component Refactoring**: Refactored the `right-sidebar` component into a new `properties-panel` component, which uses Angular Material components like `mat-form-field`, `mat-input`, and `mat-select` to edit the properties of the selected element.
 
-## Phase 9: Advanced Features
+## Phase 9: Advanced Features (Complete)
 
 - **Objective**: Implement more advanced features to enhance the UI builder.
 - **Steps**:
-    - **Cloning Elements**: Add a button to clone the currently selected element.
     - **Deleting Elements**: Add a button to delete the currently selected element.
     - **Grid Snapping**: Implement a grid-snapping feature in the canvas to help with alignment.
+
+## Phase 10: Header Layout Adjustment (Complete)
+
+- **Objective**: Move the preview icon to the right side of the header for a more intuitive layout.
+- **Steps**:
+    - **Rearrange Elements**: In `header.component.html`, move the preview button after the spacer element.

@@ -1,10 +1,8 @@
 <mat-toolbar color="primary">
+  <mat-icon>design_services</mat-icon>
+  <span class="title">UI Builder</span>
+  <span class="spacer"></span>
   <button mat-icon-button (click)="togglePreviewMode()" [matTooltip]="previewMode() ? 'Switch to Edit Mode' : 'Switch to Preview Mode'">
     <mat-icon>{{ previewMode() ? 'visibility_off' : 'visibility' }}</mat-icon>
-  </button>
-  <span>UI Builder</span>
-  <span class="spacer"></span>
-  <button mat-icon-button (click)="clone.emit()" matTooltip="Clone Selected Element">
-    <mat-icon>file_copy</mat-icon>
   </button>
 </mat-toolbar>
