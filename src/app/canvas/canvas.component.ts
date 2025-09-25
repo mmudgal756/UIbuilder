@@ -37,6 +37,10 @@ export class CanvasComponent {
       const newElement: Item = {
         id: Date.now().toString(),
         type: itemType,
+        position: {
+          x: dropPoint.x,
+          y: dropPoint.y
+        },
         style: {
           left: `${dropPoint.x}px`,
           top: `${dropPoint.y}px`,
@@ -48,6 +52,7 @@ export class CanvasComponent {
           'border-style': 'solid',
           color: '#000000',
           'font-size': '16px',
+          'font-weight': 'normal'
         },
         text: `New ${itemType}`
       };
@@ -78,6 +83,7 @@ export class CanvasComponent {
         if (i.id === item.id) {
           return {
             ...i,
+            position: { x: snappedX, y: snappedY },
             style: {
               ...i.style,
               left: `${snappedX}px`,
@@ -88,7 +94,7 @@ export class CanvasComponent {
         return i;
       });
     });
-    this.selectedElement.set({ ...item, style: { ...item.style, left: `${snappedX}px`, top: `${snappedY}px` } });
+    this.selectedElement.set({ ...item, position: { x: snappedX, y: snappedY }, style: { ...item.style, left: `${snappedX}px`, top: `${snappedY}px` } });
   }
 
   selectElement(element: Item, event: MouseEvent) {

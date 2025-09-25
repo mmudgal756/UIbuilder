@@ -1,3 +1,8 @@
-<label [style]="item().style" [class.selected]="selected()">
+<div [style.width]="item().style['width']"
+     [style.height]="item().style['height']"
+     [style.fontSize]="item().style['font-size']"
+     [style.fontWeight]="item().style['font-weight']"
+     [style.textAlign]="item().textAlign"
+     [class.selected]="selected()">
   {{ item().text }}
-</label>
+</div>

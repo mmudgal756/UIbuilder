@@ -13,6 +13,48 @@
   opacity: 0.5;
 }
 
+.properties-section {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.properties-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
 mat-form-field {
   width: 100%;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.button-group label {
+  margin-right: 10px;
+  font-weight: 500;
+}
+
+.button-group button {
+  flex: 1;
+}
+
+.button-group button.active {
+  background-color: #e0e0e0;
+}
+
+.mat-icon-button.active {
+  background-color: #e0e0e0;
 }

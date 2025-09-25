@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppElement } from '../element.class';
+import { Item } from '../item.interface';
 
 @Component({
   selector: 'app-label',
@@ -9,4 +9,7 @@ import { AppElement } from '../element.class';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule]
 })
-export class LabelComponent extends AppElement {}
+export class LabelComponent {
+  item = input.required<Item>();
+  selected = input.required<boolean>();
+}

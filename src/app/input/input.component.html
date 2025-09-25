@@ -1,13 +1,9 @@
-<mat-form-field
-  [style.width]="item().style['width']"
-  [style.height]="item().style['height']"
-  [style.background-color]="item().style['background-color']"
-  [style.border-color]="item().style['border-color']"
-  [style.border-width]="item().style['border-width']"
-  [style.border-style]="item().style['border-style']"
-  [style.color]="item().style['color']"
-  [style.font-size]="item().style['font-size']"
-  [class.selected]="selected()"
->
-  <input matInput [placeholder]="item().text || ''" />
+<mat-form-field appearance="fill" [style.width]="item().style['width']" [class.selected]="selected()">
+  <mat-label>{{ item().text }}</mat-label>
+  <input matInput 
+         [placeholder]="item().placeholder || ''"
+         [style.height]="item().style['height']"
+         [style.fontSize]="item().style['font-size']"
+         [style.fontWeight]="item().style['font-weight']"
+         [disabled]="item().disabled === true || item().disabled === 'true'">
 </mat-form-field>
