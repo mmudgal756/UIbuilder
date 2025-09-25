@@ -27,19 +27,44 @@ export class CanvasComponent {
   selectedElement = model<Item | null>(null);
   private elementRef = inject(ElementRef<HTMLElement>);
 
-  onDrop(event: CdkDragDrop<Item[]>) {
+  private getComponentByType(type: string) {
+    switch (type) {
+      case 'button':
+        return ButtonComponent;
+      case 'input':
+        return InputComponent;
+      case 'label':
+        return LabelComponent;
+      case 'textarea':
+        return TextareaComponent;
+      default:
+        return null;
+    }
+  }
+
+  onDrop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      const itemType = event.previousContainer.data[event.previousIndex] as unknown as Item['type'];
+      const itemType = event.previousContainer.data[event.previousIndex] as string;
       const dropPoint = this.getDropPoint(event.dropPoint.x, event.dropPoint.y);
+      const component = this.getComponentByType(itemType);
+
+      if (!component) {
+        return;
+      }
 
       const newElement: Item = {
-        id: Date.now().toString(),
+        id: Date.now(),
+        name: `New ${itemType}`,
         type: itemType,
+        component: component,
         position: {
           x: dropPoint.x,
           y: dropPoint.y
+        },
+        inputs: {
+          text: `New ${itemType}`
         },
         style: {
           left: `${dropPoint.x}px`,

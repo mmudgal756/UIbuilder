@@ -1,10 +1,10 @@
-<mat-form-field appearance="fill" [style.width]="item().style['width']" [class.selected]="selected()">
-  <mat-label>{{ item().text }}</mat-label>
-  <textarea matInput 
-            [placeholder]="item().placeholder || ''"
-            [style.height]="item().style['height']"
-            [style.fontSize]="item().style['font-size']"
-            [style.fontWeight]="item().style['font-weight']"
-            [disabled]="item().disabled === true || item().disabled === 'true'">
-  </textarea>
-</mat-form-field>
+<div class="fill" [style.width]="item().style.width" [class.selected]="selected()">
+    <textarea 
+              [value]="item().inputs.text || ''"
+              [placeholder]="item().inputs.placeholder || ''"
+              [style.height]="item().style.height"
+              [style.font-size]="item().style['font-size']"
+              [style.font-weight]="item().style['font-weight']"
+              [disabled]="item().inputs.disabled === true">
+    </textarea>
+</div>

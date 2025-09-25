@@ -1,29 +1,34 @@
 export interface Item {
-  id: string;
-  type: 'button' | 'input' | 'textarea' | 'label';
-  style: {
-    left: string;
-    top: string;
-    width: string;
-    height: string;
-    'background-color': string;
-    'border-color': string;
-    'border-width': string;
-    'border-style': string;
-    color: string;
-    'font-size': string;
-    'font-weight': string;
-  };
+  id: number;
+  name: string;
+  type: string;
+  component: any;
   position: { x: number; y: number };
-  text?: string;
-  placeholder?: string;
-  buttonType?: 'button' | 'submit';
-  eventHandlers?: string;
-  loading?: boolean | string;
-  disabled?: boolean | string;
-  formDataKey?: string;
-  heightValue?: string;
-  margin?: 'normal' | 'none';
-  textAlign?: 'left' | 'center' | 'right' | 'justify';
-  height?: 'auto' | 'fixed';
+  inputs: {
+    text?: string;
+    placeholder?: string;
+    disabled?: boolean;
+    buttonType?: 'button' | 'submit';
+    loading?: boolean;
+    formDataKey?: string;
+    onClickCode?: string; // Add this line
+  };
+  style: {
+    width?: string;
+    height?: string;
+    'height.px'?: number;
+    'background-color'?: string;
+    'border-color'?: string;
+    'border-width'?: string;
+    'border-style'?: string;
+    color?: string;
+    'font-size'?: string;
+    'font-weight'?: string;
+    margin?: 'normal' | 'none';
+    'text-align'?: 'left' | 'center' | 'right' | 'justify';
+    left?: string;
+    top?: string;
+  };
+  text: string;
+  zIndex?: number;
 }

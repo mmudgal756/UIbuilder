@@ -1,3 +1,4 @@
+
 # Drag and Drop UI Builder
 
 ## Overview
@@ -12,10 +13,27 @@ This is a drag-and-drop UI builder that allows users to create a simple user int
 *   **Element Manipulation:** Dropped elements can be moved around the canvas.
 *   **Properties Panel:** When an element on the canvas is selected, a properties panel will show its editable properties.
 *   **Preview Mode:** A preview mode to see the created UI in action.
+*   **Interactive Buttons:** Add custom JavaScript code to buttons that executes on click when in preview mode.
 
-## Current Phase: Phase 2 - Properties Panel
+## Implemented Phases
 
-*   Generate `PropertiesComponent`.
-*   Display selected item's properties in the `PropertiesComponent`.
-*   Update the item when a property is changed.
-*   Integrate `PropertiesComponent` with `AppComponent`.
+### Phase 1: Core Drag-and-Drop
+*   Generated the initial application structure.
+*   Created the `ToolbarComponent` with a list of draggable UI elements.
+*   Created the `CanvasComponent` as the drop target.
+*   Implemented drag-and-drop functionality using Angular CDK.
+*   Elements can be dragged from the toolbar and dropped onto the canvas.
+*   Dropped elements can be moved around the canvas.
+
+### Phase 2: Properties Panel
+*   Generated `PropertiesPanelComponent`.
+*   Displayed selected item's properties in the `PropertiesPanelComponent`.
+*   Updated the item's properties (like name, text, styles) when changed in the panel.
+*   Integrated `PropertiesPanelComponent` with `AppComponent`.
+
+## Current Phase: Phase 3 - Interactive Elements
+
+*   Added a "On Click" code editor to the `PropertiesPanelComponent` for button elements.
+*   Implemented the logic in `ButtonComponent` to execute the custom JavaScript code when a button is clicked in "Preview Mode".
+*   Updated templates and styles to accommodate the new code editor.
+*   Resolved various build errors related to data models and component templates to ensure a stable build.

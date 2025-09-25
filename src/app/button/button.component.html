@@ -1,12 +1,14 @@
 <div class="button-container" [class.selected]="selected()">
-    <button [style.background-color]="item().style['background-color']"
+    <button 
+            [style.background-color]="item().style['background-color']"
             [style.border-color]="item().style['border-color']"
             [style.border-width]="item().style['border-width']"
             [style.border-style]="item().style['border-style']"
-            [style.color]="item().style['color']"
+            [style.color]="item().style.color"
             [style.font-size]="item().style['font-size']"
             [style.font-weight]="item().style['font-weight']"
-            [disabled]="item().disabled">
-        {{ item().text }}
+            [disabled]="item().inputs.disabled"
+            (click)="handleClick($event)">
+        {{ item().inputs.text }}
     </button>
 </div>
