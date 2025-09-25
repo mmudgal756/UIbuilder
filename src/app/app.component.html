@@ -1,7 +1,7 @@
 <div class="app-container">
   <app-header [previewMode]="previewMode()" (previewModeChange)="previewMode.set($event)" (clone)="onClone()"></app-header>
   <main class="main-content">
-    <app-toolbox ></app-toolbox>
+    <app-toolbox></app-toolbox>
     <app-canvas
       [previewMode]="previewMode()"
       [(items)]="items"
