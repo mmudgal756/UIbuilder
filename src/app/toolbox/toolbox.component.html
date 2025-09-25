@@ -1,7 +1,12 @@
 <div class="toolbox-container" cdkDropList id="toolbox-drop-list" [cdkDropListData]="toolboxItems" [cdkDropListConnectedTo]="['canvas-drop-list']">
   @for (item of toolboxItems; track item) {
-    <div class="toolbox-item" cdkDrag [cdkDragData]="item">
-      {{ item | titlecase }}
-    </div>
+    <mat-card class="toolbox-item" cdkDrag [cdkDragData]="item" [matTooltip]="'Drag to add a ' + (item | titlecase)">
+      <mat-card-header>
+        <mat-card-title>{{ item | titlecase }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-icon>{{ getIcon(item) }}</mat-icon>
+      </mat-card-content>
+    </mat-card>
   }
 </div>

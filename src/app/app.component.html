@@ -7,10 +7,6 @@
       [(items)]="items"
       [(selectedElement)]="selectedElement"
     ></app-canvas>
-    <app-right-sidebar
-      [selectedElement]="selectedElement()"
-      (styleChange)="handleStyleChange($event)"
-      (textChange)="handleTextChange($event)"
-    ></app-right-sidebar>
+    <app-properties-panel [(element)]="selectedElement"></app-properties-panel>
   </main>
 </div>

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, inject, input, model } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CdkDrag, CdkDragDrop, CdkDragEnd, CdkDropList, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDragEnd, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Item } from '../item.interface';
 import { ButtonComponent } from '../button/button.component';
 import { InputComponent } from '../input/input.component';
@@ -40,16 +40,16 @@ export class CanvasComponent {
         style: {
           left: `${dropPoint.x}px`,
           top: `${dropPoint.y}px`,
-          width: '100px',
-          height: '40px',
-          'background-color': '#ccc',
-          'border-color': '#333',
+          width: '150px',
+          height: '50px',
+          'background-color': '#ffffff',
+          'border-color': '#000000',
           'border-width': '1px',
           'border-style': 'solid',
-          color: '#000',
+          color: '#000000',
           'font-size': '16px',
         },
-        text: 'New Element'
+        text: `New ${itemType}`
       };
 
       this.items.update(currentItems => [...currentItems, newElement]);

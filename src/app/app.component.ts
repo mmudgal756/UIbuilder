@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { CanvasComponent } from './canvas/canvas.component';
-import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 import { Item } from './item.interface';
 import { ToolboxComponent } from './toolbox/toolbox.component';
+import { PropertiesPanelComponent } from './properties-panel/properties-panel.component';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +15,8 @@ import { ToolboxComponent } from './toolbox/toolbox.component';
     CommonModule,
     HeaderComponent,
     CanvasComponent,
-    RightSidebarComponent,
-    ToolboxComponent
+    ToolboxComponent,
+    PropertiesPanelComponent
   ]
 })
 export class AppComponent {
@@ -38,52 +38,5 @@ export class AppComponent {
       this.items.update(items => [...items, newElement]);
       this.selectedElement.set(newElement);
     }
-  }
-
-  handleStyleChange(change: { property: string; value: string }) {
-    if (!this.selectedElement()) return;
-
-    let value = change.value;
-    if (change.property === 'width' || change.property === 'height' || change.property === 'font-size') {
-      value += 'px';
-    }
-
-    this.selectedElement.update(element => {
-      if (!element) return null;
-      return {
-        ...element,
-        style: {
-          ...element.style,
-          [change.property]: value
-        }
-      };
-    });
-
-    this.items.update(items => {
-      return items.map(i => {
-        if (i.id === this.selectedElement()?.id) {
-          return this.selectedElement()!;
-        }
-        return i;
-      });
-    });
-  }
-
-  handleTextChange(text: string) {
-    if (!this.selectedElement()) return;
-
-    this.selectedElement.update(element => {
-      if (!element) return null;
-      return { ...element, text };
-    });
-
-    this.items.update(items => {
-      return items.map(i => {
-        if (i.id === this.selectedElement()?.id) {
-          return this.selectedElement()!;
-        }
-        return i;
-      });
-    });
   }
 }

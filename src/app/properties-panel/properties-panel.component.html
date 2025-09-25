@@ -1,0 +1,27 @@
+<div class="properties-panel-container">
+  @if (element()) {
+    <mat-form-field appearance="fill">
+      <mat-label>Text</mat-label>
+      <input matInput [(ngModel)]="element()!.text">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Width</mat-label>
+      <input matInput [(ngModel)]="element()!.style['width']">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Height</mat-label>
+      <input matInput [(ngModel)]="element()!.style['height']">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Font Size</mat-label>
+      <input matInput [(ngModel)]="element()!.style['font-size']">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Font Weight</mat-label>
+      <mat-select [(ngModel)]="element()!.style['font-weight']">
+        <mat-option value="normal">Normal</mat-option>
+        <mat-option value="bold">Bold</mat-option>
+      </mat-select>
+    </mat-form-field>
+  }
+</div>

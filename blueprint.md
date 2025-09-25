@@ -59,3 +59,21 @@ This is a drag-and-drop UI builder application created with Angular. It allows u
     2. **Element Service**: An injectable service to manage the state of the elements on the canvas, including the currently selected element.
     3. **Property Binding**: The sidebar will display the properties of the selected element, such as text, style, etc.
     4. **Real-time Updates**: Changes made in the sidebar will be instantly reflected on the canvas.
+
+## Phase 8: Angular Material Integration & Properties Panel (Complete)
+
+- **Objective**: Replace the default HTML elements with their Angular Material counterparts to create a more polished and consistent user interface.
+- **Steps**:
+    - **Installation**: Added the `@angular/material` and `@angular/cdk` packages to the project.
+    - **Theme**: Configured the `indigo-pink` theme.
+    - **Animations**: Enabled animations by importing `provideAnimations` in `app.config.ts`.
+    - **Typography**: Applied Material Design typography to the application.
+    - **Component Refactoring**: Refactored the `right-sidebar` component into a new `properties-panel` component, which uses Angular Material components like `mat-form-field`, `mat-input`, and `mat-select` to edit the properties of the selected element.
+
+## Phase 9: Advanced Features
+
+- **Objective**: Implement more advanced features to enhance the UI builder.
+- **Steps**:
+    - **Cloning Elements**: Add a button to clone the currently selected element.
+    - **Deleting Elements**: Add a button to delete the currently selected element.
+    - **Grid Snapping**: Implement a grid-snapping feature in the canvas to help with alignment.

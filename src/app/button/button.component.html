@@ -1,3 +1,14 @@
-<button [style]="item().style" [class.selected]="selected()">
+<button
+  mat-raised-button
+  [style.width]="item().style['width']"
+  [style.height]="item().style['height']"
+  [style.background-color]="item().style['background-color']"
+  [style.border-color]="item().style['border-color']"
+  [style.border-width]="item().style['border-width']"
+  [style.border-style]="item().style['border-style']"
+  [style.color]="item().style['color']"
+  [style.font-size]="item().style['font-size']"
+  [class.selected]="selected()"
+>
   {{ item().text }}
 </button>

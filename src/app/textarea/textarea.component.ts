@@ -1,12 +1,18 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppElement } from '../element.class';
+import { Item } from '../item.interface';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @Component({
   selector: 'app-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule]
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, TextFieldModule]
 })
-export class TextareaComponent extends AppElement { }
+export class TextareaComponent {
+  item = input.required<Item>();
+  selected = input.required<boolean>();
+}
