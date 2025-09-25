@@ -1,0 +1,22 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 250px 1fr 250px;
+  flex-grow: 1;
+  gap: 1rem;
+  padding: 1rem;
+  overflow: hidden; /* Prevent scrolling on the main container */
+}
+
+/* Ensure child components can scroll if their content overflows */
+app-toolbox,
+app-canvas,
+app-right-sidebar {
+  overflow-y: auto;
+  height: 100%;
+}

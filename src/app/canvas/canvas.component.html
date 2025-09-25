@@ -1,0 +1,38 @@
+<div
+  id="canvas-drop-list"
+  #canvas
+  class="canvas-container"
+  cdkDropList
+  [cdkDropListData]="items()"
+  [cdkDropListConnectedTo]="['toolbox-drop-list']"
+  (cdkDropListDropped)="onDrop($event)"
+  (click)="deselectElement()"
+>
+  @for (item of items(); track item.id) {
+    <div
+      cdkDrag
+      [cdkDragData]="item"
+      (cdkDragEnded)="onElementDragEnded($event, item)"
+      class="element-container"
+      [class.selected]="item.id === selectedElement()?.id"
+      [style.left]="item.style['left']"
+      [style.top]="item.style['top']"
+      (click)="selectElement(item, $event)"
+    >
+      @switch (item.type) {
+        @case ('button') {
+          <app-button [item]="item" [selected]="item.id === selectedElement()?.id"></app-button>
+        }
+        @case ('input') {
+          <app-input [item]="item" [selected]="item.id === selectedElement()?.id"></app-input>
+        }
+        @case ('label') {
+          <app-label [item]="item" [selected]="item.id === selectedElement()?.id"></app-label>
+        }
+        @case ('textarea') {
+          <app-textarea [item]="item" [selected]="item.id === selectedElement()?.id"></app-textarea>
+        }
+      }
+    </div>
+  }
+</div>

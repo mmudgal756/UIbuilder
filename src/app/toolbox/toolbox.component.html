@@ -1,0 +1,7 @@
+<div class="toolbox-container" cdkDropList id="toolbox-drop-list" [cdkDropListData]="toolboxItems" [cdkDropListConnectedTo]="['canvas-drop-list']">
+  @for (item of toolboxItems; track item) {
+    <div class="toolbox-item" cdkDrag [cdkDragData]="item">
+      {{ item | titlecase }}
+    </div>
+  }
+</div>

@@ -1,0 +1,27 @@
+.canvas-container {
+  position: relative;
+  min-height: 400px;
+  background-color: #f8f9fa;
+  background-image:
+    linear-gradient(to right, #e9ecef 1px, transparent 1px),
+    linear-gradient(to bottom, #e9ecef 1px, transparent 1px);
+  background-size: 20px 20px;
+  border: 1px dashed #ced4da;
+  border-radius: 4px;
+}
+
+.element-container {
+  position: absolute;
+  cursor: grab;
+  transition: box-shadow 0.2s ease;
+}
+
+.element-container.cdk-drag-dragging {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  cursor: grabbing;
+}
+
+.element-container.selected {
+  outline: 2px solid #007bff;
+  box-shadow: 0 0 10px rgba(0,123,255,0.5);
+}

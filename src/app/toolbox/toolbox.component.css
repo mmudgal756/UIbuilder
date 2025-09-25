@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  width: 250px;
+  background-color: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.toolbox-header {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #343a40;
+}
+
+.toolbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.toolbox-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  cursor: grab;
+  transition: all 0.2s ease-in-out;
+}
+
+.toolbox-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toolbox-item.disabled {
+  cursor: not-allowed;
+  background-color: #e9ecef;
+  color: #adb5bd;
+}
+
+.toolbox-item i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.toolbox-item span {
+  font-weight: 500;
+  color: #495057;
+}

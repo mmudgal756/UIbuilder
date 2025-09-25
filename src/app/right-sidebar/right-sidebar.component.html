@@ -1,0 +1,31 @@
+<div class="sidebar-container">
+  @if (selectedElement(); as element) {
+    <div class="component-settings">
+      <h3>{{ element.type }} Settings</h3>
+      <div class="form-group">
+        <label for="component-name">Text</label>
+        <input type="text" id="component-name" [value]="element.text" (input)="updateText($event)">
+      </div>
+      <div class="form-group">
+        <label for="component-font-size">Font Size</label>
+        <input type="number" id="component-font-size" [value]="getStyle('font-size')" (input)="updateStyle('font-size', $event)">
+      </div>
+      <div class="form-group">
+        <label for="component-color">Color</label>
+        <input type="color" id="component-color" [value]="getColor('color')" (input)="updateStyle('color', $event)">
+      </div>
+      <div class="form-group">
+        <label for="component-background-color">Background Color</label>
+        <input type="color" id="component-background-color" [value]="getColor('background-color')" (input)="updateStyle('background-color', $event)">
+      </div>
+      <div class="form-group">
+        <label for="component-width">Width</label>
+        <input type="number" id="component-width" [value]="getStyle('width')" (input)="updateStyle('width', $event)">
+      </div>
+      <div class="form-group">
+        <label for="component-height">Height</label>
+        <input type="number" id="component-height" [value]="getStyle('height')" (input)="updateStyle('height', $event)">
+      </div>
+    </div>
+  }
+</div>
