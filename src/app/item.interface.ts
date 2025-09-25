@@ -11,7 +11,8 @@ export interface Item {
     buttonType?: 'button' | 'submit';
     loading?: boolean;
     formDataKey?: string;
-    onClickCode?: string; // Add this line
+    onClickCode?: string;
+    color?: string;
   };
   style: {
     width?: string;

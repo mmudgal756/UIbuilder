@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,4 +29,15 @@ export class AppComponent {
   items = signal<Item[]>([]);
   selectedElement = signal<Item | null>(null);
   previewMode = signal(false);
+
+  constructor() {
+    effect(() => {
+      const selected = this.selectedElement();
+      if (selected) {
+        this.items.update(items =>
+          items.map(item => (item.id === selected.id ? selected : item))
+        );
+      }
+    });
+  }
 }

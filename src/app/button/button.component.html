@@ -1,6 +1,7 @@
 <div class="button-container" [class.selected]="selected()">
-    <button color="primary"
+    <button 
             mat-button="filled"
+            [color]="item().inputs.color"
             [style.background-color]="item().style['background-color']"
             [style.border-color]="item().style['border-color']"
             [style.border-width]="item().style['border-width']"

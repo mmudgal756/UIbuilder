@@ -1,129 +1,89 @@
-<div class="properties-panel-container">
-  @if (element(); as el) {
-    <div class="properties-section">
-      <div class="property">
-        <label>Name</label>
-        <input type="text" [(ngModel)]="el.name" [disabled]="previewMode()">
-      </div>
-      <label>Type: {{ el.type }}</label>
-      @switch (el.type) {
-        @case ('button') {
-          <div class="property">
-            <label>Text</label>
-            <input type="text" [(ngModel)]="el.inputs.text" [disabled]="previewMode()">
-          </div>
-          <div class="property">
-            <label>Disabled</label>
-            <input type="checkbox" [(ngModel)]="el.inputs.disabled" [disabled]="previewMode()">
-          </div>
+<div class="properties-panel">
+  @if (element(); as selectedElement) {
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Properties</mat-card-title>
+        <mat-card-subtitle>{{ selectedElement.name }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput [value]="selectedElement.name" (input)="updateProperty('name', $event)">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Text</mat-label>
+          <input matInput [value]="selectedElement.inputs.text" (input)="updateInput('text', $event)">
+        </mat-form-field>
+
+        @if (selectedElement.type === 'button') {
+          <mat-slide-toggle [checked]="selectedElement.inputs.color === 'primary'" (change)="updateButtonColor($event)">
+            Primary
+          </mat-slide-toggle>
+
+          <mat-form-field appearance="fill">
+            <mat-label>On Click</mat-label>
+            <textarea matInput [value]="selectedElement.inputs['onClickCode'] || ''" (input)="updateInput('onClickCode', $event)" cdkTextareaAutosize></textarea>
+          </mat-form-field>
         }
-        @case ('input') {
-          <div class="property">
-            <label>Placeholder</label>
-            <input type="text" [(ngModel)]="el.inputs.placeholder" [disabled]="previewMode()">
-          </div>
-          <div class="property">
-            <label>Disabled</label>
-            <input type="checkbox" [(ngModel)]="el.inputs.disabled" [disabled]="previewMode()">
-          </div>
-        }
-        @case ('label') {
-          <div class="property">
-            <label>Text</label>
-            <input type="text" [(ngModel)]="el.inputs.text" [disabled]="previewMode()">
-          </div>
-        }
-        @case ('textarea') {
-          <div class="property">
-            <label>Placeholder</label>
-            <input type="text" [(ngModel)]="el.inputs.placeholder" [disabled]="previewMode()">
-          </div>
-          <div class="property">
-            <label>Disabled</label>
-            <input type="checkbox" [(ngModel)]="el.inputs.disabled" [disabled]="previewMode()">
-          </div>
-        }
-      }
+
+        <h4 class="mat-h4">Styles</h4>
+
+        <div class="style-grid">
+          <mat-form-field appearance="fill">
+            <mat-label>Width</mat-label>
+            <input matInput [value]="selectedElement.style['width'] || ''" (input)="updateStyle('width', $event)">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Height</mat-label>
+            <input matInput [value]="selectedElement.style['height'] || ''" (input)="updateStyle('height', $event)">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Background Color</mat-label>
+            <input matInput type="color" [value]="selectedElement.style['background-color'] || ''" (input)="updateStyle('background-color', $event)">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Border Color</mat-label>
+            <input matInput type="color" [value]="selectedElement.style['border-color'] || ''" (input)="updateStyle('border-color', $event)">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Border Width</mat-label>
+            <input matInput [value]="selectedElement.style['border-width'] || ''" (input)="updateStyle('border-width', $event)">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Border Style</mat-label>
+            <mat-select [value]="selectedElement.style['border-style'] || ''" (selectionChange)="updateStyle('border-style', $event)">
+              <mat-option value="solid">Solid</mat-option>
+              <mat-option value="dashed">Dashed</mat-option>
+              <mat-option value="dotted">Dotted</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Font Size</mat-label>
+            <input matInput [value]="selectedElement.style['font-size'] || ''" (input)="updateStyle('font-size', $event)">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Font Weight</mat-label>
+            <mat-select [value]="selectedElement.style['font-weight'] || ''" (selectionChange)="updateStyle('font-weight', $event)">
+              <mat-option value="normal">Normal</mat-option>
+              <mat-option value="bold">Bold</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <div class="no-element-selected">
+      <mat-icon>touch_app</mat-icon>
+      <p>Select an element to see its properties</p>
     </div>
-
-    <div class="properties-section">
-      <label>Styles</label>
-      @switch (el.type) {
-        @case ('button') {
-          <div class="property">
-            <label>Button Type</label>
-            <div class="button-group">
-              <button [class.active]="el.inputs.buttonType === 'button'" (click)="el.inputs.buttonType = 'button'" [disabled]="previewMode()">Button</button>
-              <button [class.active]="el.inputs.buttonType === 'submit'" (click)="el.inputs.buttonType = 'submit'" [disabled]="previewMode()">Submit</button>
-            </div>
-          </div>
-        }
-      }
-
-      <div class="property">
-        <label>Loading</label>
-        <input type="checkbox" [value]="false" [(ngModel)]="el.inputs.loading" [disabled]="previewMode()">
-      </div>
-
-      <div class="property">
-        @if (el.type === 'input' || el.type === 'textarea') {
-          <div class="property">
-            <label>Form Data Key</label>
-            <input type="text" placeholder="Enter form data key" [(ngModel)]="el.inputs.formDataKey" [disabled]="previewMode()">
-          </div>
-        }
-      </div>
-
-      <div class="property">
-        <label>Height</label>
-        <div class="button-group">
-          <button [class.active]="el.style.height === 'auto'" (click)="el.style.height = 'auto'" [disabled]="previewMode()">Auto</button>
-          <button [class.active]="el.style.height === 'fixed'" (click)="el.style.height = 'fixed'" [disabled]="previewMode()">Fixed</button>
-        </div>
-      </div>
-      @if (el.style.height === 'fixed') {
-        <div class="property">
-          <label>Height (px)</label>
-          <input type="number" [(ngModel)]="el.style['height.px']" [disabled]="previewMode()">
-        </div>
-      }
-
-      <div class="property">
-        <label>Margin</label>
-        <div class="button-group">
-          <button [class.active]="el.style.margin === 'normal'" (click)="el.style.margin = 'normal'" [disabled]="previewMode()">Normal</button>
-          <button [class.active]="el.style.margin === 'none'" (click)="el.style.margin = 'none'" [disabled]="previewMode()">None</button>
-        </div>
-      </div>
-
-      <div class="property">
-        <label>Text Align</label>
-        <div class="button-group">
-          <button (click)="el.style['text-align'] = 'left'" [class.active]="el.style['text-align'] === 'left'" [disabled]="previewMode()">
-            <i class="fas fa-align-left"></i>
-          </button>
-          <button (click)="el.style['text-align'] = 'center'" [class.active]="el.style['text-align'] === 'center'" [disabled]="previewMode()">
-            <i class="fas fa-align-center"></i>
-          </button>
-          <button (click)="el.style['text-align'] = 'right'" [class.active]="el.style['text-align'] === 'right'" [disabled]="previewMode()">
-            <i class="fas fa-align-right"></i>
-          </button>
-          <button (click)="el.style['text-align'] = 'justify'" [class.active]="el.style['text-align'] === 'justify'" [disabled]="previewMode()">
-            <i class="fas fa-align-justify"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    @if (el.type === 'button') {
-      <div class="properties-section">
-        <label>On Click</label>
-        <textarea
-          class="code-editor"
-          [(ngModel)]="el.inputs.onClickCode"
-          [disabled]="previewMode()"
-          placeholder="Enter JavaScript code to run on click">
-        </textarea>
-      </div>
-    }
   }
 </div>
