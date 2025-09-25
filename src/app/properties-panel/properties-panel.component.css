@@ -1,11 +1,18 @@
-:host {
-  display: block;
-  padding: 1rem;
-  border-left: 1px solid #ccc;
-}
-
 .properties-panel-container {
+  width: 250px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-left: 1px solid #ccc;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 15px;
+}
+
+.properties-panel-container.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+mat-form-field {
+  width: 100%;
 }

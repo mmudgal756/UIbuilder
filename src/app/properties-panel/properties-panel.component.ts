@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, model, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Item } from '../item.interface';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,4 +15,5 @@ import { FormsModule } from '@angular/forms';
 })
 export class PropertiesPanelComponent {
   element = model<Item | null>(null);
+  previewMode = input<boolean>(false);
 }

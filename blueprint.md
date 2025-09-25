@@ -82,3 +82,18 @@ This is a drag-and-drop UI builder application created with Angular. It allows u
 - **Objective**: Move the preview icon to the right side of the header for a more intuitive layout.
 - **Steps**:
     - **Rearrange Elements**: In `header.component.html`, move the preview button after the spacer element.
+
+## Phase 11: Toolbox Visibility in Preview Mode (Complete)
+
+- **Objective**: Keep the toolbox visible in preview mode, but disable the ability to drag items.
+- **Steps**:
+    - **Always Show Toolbox**: Remove the `@if` condition that hides the toolbox in `app.component.html`.
+    - **Pass `previewMode`**: Pass the `previewMode` signal to the `ToolboxComponent`.
+    - **Disable Items**: In the `ToolboxComponent`, apply a disabled style and prevent drag operations on the toolbox items when in preview mode.
+
+## Phase 12: Disable Properties Panel in Preview Mode
+
+- **Objective**: Disable the properties panel when the application is in preview mode.
+- **Steps**:
+    - **Pass `previewMode`**: Pass the `previewMode` signal to the `PropertiesPanelComponent`.
+    - **Disable Form Fields**: In the `PropertiesPanelComponent`, apply a disabled style and prevent editing on the form fields when in preview mode.

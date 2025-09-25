@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material/card';
@@ -13,6 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   imports: [CommonModule, DragDropModule, MatCardModule, MatIconModule, MatTooltipModule, TitleCasePipe]
 })
 export class ToolboxComponent {
+  previewMode = input<boolean>(false);
   toolboxItems = ['button', 'input', 'label', 'textarea'];
 
   getIcon(item: string): string {

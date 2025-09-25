@@ -1,24 +1,24 @@
-<div class="properties-panel-container">
+<div class="properties-panel-container" [class.disabled]="previewMode()">
   @if (element()) {
     <mat-form-field appearance="fill">
       <mat-label>Text</mat-label>
-      <input matInput [(ngModel)]="element()!.text">
+      <input matInput [(ngModel)]="element()!.text" [disabled]="previewMode()">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Width</mat-label>
-      <input matInput [(ngModel)]="element()!.style['width']">
+      <input matInput [(ngModel)]="element()!.style['width']" [disabled]="previewMode()">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Height</mat-label>
-      <input matInput [(ngModel)]="element()!.style['height']">
+      <input matInput [(ngModel)]="element()!.style['height']" [disabled]="previewMode()">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Font Size</mat-label>
-      <input matInput [(ngModel)]="element()!.style['font-size']">
+      <input matInput [(ngModel)]="element()!.style['font-size']" [disabled]="previewMode()">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Font Weight</mat-label>
-      <mat-select [(ngModel)]="element()!.style['font-weight']">
+      <mat-select [(ngModel)]="element()!.style['font-weight']" [disabled]="previewMode()">
         <mat-option value="normal">Normal</mat-option>
         <mat-option value="bold">Bold</mat-option>
       </mat-select>
