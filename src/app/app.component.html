@@ -1,7 +1,7 @@
 <div class="container">
     <app-header [(previewMode)]="previewMode" />
     <main class="main-content">
-      <app-toolbox [previewMode]="previewMode()" />
+      <app-toolbox/>
       <app-canvas [(items)]="items" [(selectedElement)]="selectedElement" [previewMode]="previewMode()"/>
       @if (selectedElement()) {
         <app-properties-panel [(element)]="selectedElement" [previewMode]="previewMode()" />

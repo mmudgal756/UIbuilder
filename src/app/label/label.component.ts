@@ -12,4 +12,5 @@ import { Item } from '../item.interface';
 export class LabelComponent {
   item = input.required<Item>();
   selected = input.required<boolean>();
+  previewMode = input.required<boolean>();
 }

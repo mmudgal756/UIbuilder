@@ -13,16 +13,16 @@
          [style.top]="item.style.top">
       @switch (item.type) {
         @case ('button') {
-          <app-button [item]="item" [selected]="selectedElement()?.id === item.id"></app-button>
+          <app-button [item]="item" [selected]="selectedElement()?.id === item.id" [previewMode]="previewMode()"></app-button>
         }
         @case ('input') {
-          <app-input [item]="item" [selected]="selectedElement()?.id === item.id"></app-input>
+          <app-input [item]="item" [selected]="selectedElement()?.id === item.id" [previewMode]="previewMode()"></app-input>
         }
         @case ('label') {
-          <app-label [item]="item" [selected]="selectedElement()?.id === item.id"></app-label>
+          <app-label [item]="item" [selected]="selectedElement()?.id === item.id" [previewMode]="previewMode()"></app-label>
         }
         @case ('textarea') {
-          <app-textarea [item]="item" [selected]="selectedElement()?.id === item.id"></app-textarea>
+          <app-textarea [item]="item" [selected]="selectedElement()?.id === item.id" [previewMode]="previewMode()"></app-textarea>
         }
       }
     </div>

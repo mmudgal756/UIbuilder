@@ -14,4 +14,5 @@ import { MatInputModule } from '@angular/material/input';
 export class InputComponent {
   item = input.required<Item>();
   selected = input.required<boolean>();
+  previewMode = input.required<boolean>();
 }

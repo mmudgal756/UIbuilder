@@ -1,10 +1,13 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CanvasComponent } from './canvas/canvas.component';
-import { Item } from './item.interface';
 import { ToolboxComponent } from './toolbox/toolbox.component';
-import { PropertiesPanelComponent } from './properties-panel/properties-panel.component';
+import { Item } from './item.interface';
+import { HeaderComponent } from "./header/header.component";
+import { PropertiesPanelComponent } from "./properties-panel/properties-panel.component";
 
 @Component({
   selector: 'app-root',
@@ -13,14 +16,17 @@ import { PropertiesPanelComponent } from './properties-panel/properties-panel.co
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
-    HeaderComponent,
-    CanvasComponent,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
     ToolboxComponent,
+    CanvasComponent,
+    HeaderComponent,
     PropertiesPanelComponent
-  ]
+]
 })
 export class AppComponent {
-  previewMode = signal(false);
   items = signal<Item[]>([]);
   selectedElement = signal<Item | null>(null);
+  previewMode = signal(false);
 }

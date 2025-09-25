@@ -14,4 +14,5 @@ import { Item } from '../item.interface';
 export class TextareaComponent {
   item = input.required<Item>();
   selected = input.required<boolean>();
+  previewMode = input.required<boolean>();
 }

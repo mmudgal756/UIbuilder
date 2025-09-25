@@ -1,10 +1,12 @@
-<button mat-raised-button 
-        [color]="item().style['color'] || 'primary'" 
-        [style.width]="item().style['width']"
-        [style.height]="item().style['height']"
-        [style.fontSize]="item().style['font-size']"
-        [style.fontWeight]="item().style['font-weight']"
-        [disabled]="item().disabled === true || item().disabled === 'true'"
-        [class.selected]="selected()">
-  {{ item().text }}
-</button>
+<div class="button-container" [class.selected]="selected()">
+    <button [style.background-color]="item().style['background-color']"
+            [style.border-color]="item().style['border-color']"
+            [style.border-width]="item().style['border-width']"
+            [style.border-style]="item().style['border-style']"
+            [style.color]="item().style['color']"
+            [style.font-size]="item().style['font-size']"
+            [style.font-weight]="item().style['font-weight']"
+            [disabled]="item().disabled">
+        {{ item().text }}
+    </button>
+</div>
