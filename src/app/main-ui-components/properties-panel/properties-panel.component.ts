@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, model, input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Item } from '../item.interface';
+import { Item } from '../../interface/item.interface';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
-import { ElementNamingService } from '../element-naming.service';
+import { ElementNamingService } from '../../services/element-naming.service';
 
 @Component({
   selector: 'app-properties-panel',

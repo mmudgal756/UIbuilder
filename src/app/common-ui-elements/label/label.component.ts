@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Item } from '../item.interface';
+import { Item } from '../../interface/item.interface';
 
 @Component({
   selector: 'app-label',

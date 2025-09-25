@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { CanvasComponent } from './canvas/canvas.component';
-import { ToolboxComponent } from './toolbox/toolbox.component';
-import { Item } from './item.interface';
-import { HeaderComponent } from "./header/header.component";
-import { PropertiesPanelComponent } from "./properties-panel/properties-panel.component";
+import { CanvasComponent } from './main-ui-components/canvas/canvas.component';
+import { ToolboxComponent } from './main-ui-components/toolbox/toolbox.component';
+import { Item } from './interface/item.interface';
+import { HeaderComponent } from "./main-ui-components/header/header.component";
+import { PropertiesPanelComponent } from "./main-ui-components/properties-panel/properties-panel.component";
 
 @Component({
   selector: 'app-root',

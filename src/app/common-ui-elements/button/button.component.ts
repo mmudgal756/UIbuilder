@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, effect, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Item } from '../item.interface';
+import { Item } from '../../interface/item.interface';
 import { MatButtonModule } from '@angular/material/button';
-import { ElementNamingService } from '../element-naming.service';
+import { ElementNamingService } from '../../services/element-naming.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

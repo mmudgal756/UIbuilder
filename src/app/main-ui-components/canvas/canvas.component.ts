@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, ElementRef, inject, input, model } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkDragDrop, CdkDragEnd, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Item } from '../item.interface';
-import { ButtonComponent } from '../button/button.component';
-import { InputComponent } from '../input/input.component';
-import { LabelComponent } from '../label/label.component';
-import { TextareaComponent } from '../textarea/textarea.component';
+import { Item } from '../../interface/item.interface';
+import { ButtonComponent } from '../../common-ui-elements/button/button.component';
+import { InputComponent } from '../../common-ui-elements/input/input.component';
+import { LabelComponent } from '../../common-ui-elements/label/label.component';
+import { TextareaComponent } from '../../common-ui-elements/textarea/textarea.component';
 
 @Component({
   selector: 'app-canvas',

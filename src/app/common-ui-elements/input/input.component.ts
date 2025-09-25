@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
+import { Item } from '../../interface/item.interface';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Item } from '../item.interface';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-textarea',
-  templateUrl: './textarea.component.html',
-  styleUrls: ['./textarea.component.css'],
+  selector: 'app-input',
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, MatInputModule, MatFormFieldModule]
+  imports: [CommonModule, MatFormFieldModule, MatInputModule]
 })
-export class TextareaComponent {
+export class InputComponent {
   item = input.required<Item>();
   selected = input.required<boolean>();
   previewMode = input.required<boolean>();
