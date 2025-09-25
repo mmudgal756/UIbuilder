@@ -2,6 +2,7 @@ export interface Item {
   id: number;
   name: string;
   type: string;
+  label:string;
   component: any;
   position: { x: number; y: number };
   inputs: {

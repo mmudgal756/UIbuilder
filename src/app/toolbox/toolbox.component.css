@@ -1,5 +1,5 @@
 .toolbox-container {
-    width: 200px;
+    width: 99%;
     height: 100%;
     background-color: #f5f5f5;
     border-right: 1px solid #ccc;
@@ -20,7 +20,7 @@
   
   .toolbox-item {
     padding: 10px;
-    margin-bottom: 10px;
+    margin-top: 10px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;

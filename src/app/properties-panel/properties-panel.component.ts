@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, model, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, model, input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Item } from '../item.interface';
 import { MatCardModule } from '@angular/material/card';
@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
+import { ElementNamingService } from '../element-naming.service';
 
 @Component({
   selector: 'app-properties-panel',
@@ -26,6 +27,9 @@ import { MatIconModule } from '@angular/material/icon';
 export class PropertiesPanelComponent {
   element = model<Item | null>(null);
   previewMode = input<boolean>(false);
+
+  private elementNamingService = inject(ElementNamingService);
+  elementName = this.elementNamingService.elementName;
 
   updateProperty(property: keyof Item, event: Event) {
     const el = this.element();

@@ -2,25 +2,17 @@
   @if (element(); as selectedElement) {
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Properties</mat-card-title>
-        <mat-card-subtitle>{{ selectedElement.name }}</mat-card-subtitle>
+        <mat-card-title>{{ elementName() }} Property</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input matInput [value]="selectedElement.name" (input)="updateProperty('name', $event)">
-        </mat-form-field>
+        
 
         <mat-form-field appearance="fill">
-          <mat-label>Text</mat-label>
+          <mat-label>Label </mat-label>
           <input matInput [value]="selectedElement.inputs.text" (input)="updateInput('text', $event)">
         </mat-form-field>
 
         @if (selectedElement.type === 'button') {
-          <mat-slide-toggle [checked]="selectedElement.inputs.color === 'primary'" (change)="updateButtonColor($event)">
-            Primary
-          </mat-slide-toggle>
-
           <mat-form-field appearance="fill">
             <mat-label>On Click</mat-label>
             <textarea matInput [value]="selectedElement.inputs['onClickCode'] || ''" (input)="updateInput('onClickCode', $event)" cdkTextareaAutosize></textarea>

@@ -1,9 +1,12 @@
-<div class="fill" [style.width]="item().style.width" [class.selected]="selected()">
-    <input type="text" 
+<mat-form-field class="fill" [style.width]="item().style.width" [class.selected]="selected()">
+    <mat-label>{{item().label || ''}}</mat-label>
+    <input matInput type="text" 
            [value]="item().inputs.text || ''"
            [placeholder]="item().inputs.placeholder || ''"
            [style.height]="item().style.height"
            [style.font-size]="item().style['font-size']"
            [style.font-weight]="item().style['font-weight']"
            [disabled]="item().inputs.disabled === true">
-</div>
+</mat-form-field>
+
+

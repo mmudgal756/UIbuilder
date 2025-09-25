@@ -1,6 +1,6 @@
 .canvas-container {
   position: relative;
-  min-height: 400px;
+  min-height: 99%;
   background-color: #f8f9fa;
   background-image:
     linear-gradient(to right, #e9ecef 1px, transparent 1px),

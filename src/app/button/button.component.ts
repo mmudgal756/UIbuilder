@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Item } from '../item.interface';
 import { MatButtonModule } from '@angular/material/button';
+import { ElementNamingService } from '../element-naming.service';
 
 @Component({
   selector: 'app-button',
@@ -15,6 +16,17 @@ export class ButtonComponent {
   selected = input<boolean>();
   previewMode = input<boolean>();
   onClick = output<Event>();
+  unquieName='#button';
+
+  private elementNamingService = inject(ElementNamingService);
+
+  constructor() {
+    effect(() => {
+      if (this.selected()) {
+        this.elementNamingService.elementName.set(this.unquieName);
+      }
+    });
+  }
 
   handleClick(event: Event) {
     if (this.previewMode() && this.item().inputs.onClickCode) {

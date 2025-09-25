@@ -57,6 +57,7 @@ export class CanvasComponent {
       const newElement: Item = {
         id: Date.now(),
         name: `New ${itemType}`,
+        label: `New ${itemType}`,
         type: itemType,
         component: component,
         position: {
