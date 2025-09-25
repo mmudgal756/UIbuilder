@@ -1,10 +1,10 @@
-<div class="fill" [style.width]="item().style.width" [class.selected]="selected()">
+<div class="fill" [style.width]="item().style['width']" [class.selected]="selected()">
     <textarea 
-              [value]="item().inputs.text || ''"
-              [placeholder]="item().inputs.placeholder || ''"
-              [style.height]="item().style.height"
+              [value]="item().inputs['text'] || ''"
+              [placeholder]="item().inputs['placeholder'] || ''"
+              [style.height]="item().style['height']"
               [style.font-size]="item().style['font-size']"
               [style.font-weight]="item().style['font-weight']"
-              [disabled]="item().inputs.disabled === true">
+              [disabled]="item().inputs['disabled'] === true">
     </textarea>
 </div>

@@ -3,22 +3,60 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title>{{ elementName() }} Property</mat-card-title>
-        <mat-card-title>{{ selectedElement.inputs.text }} Property</mat-card-title>
-
       </mat-card-header>
       <mat-card-content>
-        
-
         <mat-form-field appearance="fill">
-          <mat-label>Label </mat-label>
-          <input matInput [value]="selectedElement.inputs.text" (input)="updateInput('text', $event)">
+          <mat-label>Label</mat-label>
+          <input matInput [value]="selectedElement.inputs.text" (input)="updateInputs('text', $event)">
         </mat-form-field>
 
         @if (selectedElement.type === 'button') {
           <mat-form-field appearance="fill">
-            <mat-label>On Click</mat-label>
-            <textarea matInput [value]="selectedElement.inputs['onClickCode'] || ''" (input)="updateInput('onClickCode', $event)" cdkTextareaAutosize></textarea>
+            <mat-label>Action</mat-label>
+            <mat-select [value]="selectedElement.action" (selectionChange)="updateAction($event)">
+              <mat-option value="none">None</mat-option>
+              <mat-option value="customJavaScript">Custom JavaScript</mat-option>
+              <mat-option value="apiCall">API Call</mat-option>
+            </mat-select>
           </mat-form-field>
+
+          @if (selectedElement.action === 'customJavaScript') {
+            <mat-form-field appearance="fill" class="properties-section">
+              <mat-label>Custom JavaScrip</mat-label>
+
+              <textarea matInput 
+                class="code-editor"
+                [value]="selectedElement.customJavaScript"
+                (input)="updateInput('customJavaScript', $event)"
+                [disabled]="previewMode()"
+                placeholder="Enter JavaScript code to run on click">
+              </textarea>
+            </mat-form-field>
+          }
+
+          @if (selectedElement.action === 'apiCall') {
+            <mat-form-field appearance="fill">
+              <mat-label>API URL</mat-label>
+              <input matInput [value]="selectedElement.apiUrl" (input)="updateInput('apiUrl', $event)">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>HTTP Method</mat-label>
+              <mat-select [value]="selectedElement.httpMethod" (selectionChange)="updateHttpMethod($event)">
+                <mat-option value="GET">GET</mat-option>
+                <mat-option value="POST">POST</mat-option>
+                <mat-option value="PUT">PUT</mat-option>
+                <mat-option value="DELETE">DELETE</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            @if (selectedElement.httpMethod === 'POST' || selectedElement.httpMethod === 'PUT') {
+              <mat-form-field appearance="fill">
+                <mat-label>Request Body</mat-label>
+                <textarea matInput [value]="selectedElement.requestBody" (input)="updateInput('requestBody', $event)" cdkTextareaAutosize></textarea>
+              </mat-form-field>
+            }
+          }
         }
 
         <h4 class="mat-h4">Styles</h4>
@@ -51,7 +89,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Border Style</mat-label>
-            <mat-select [value]="selectedElement.style['border-style'] || ''" (selectionChange)="updateStyle('border-style', $event)">
+            <mat-select [value]="selectedElement.style['border-style'] || ''" (selectionChange)="updateStyle('border-style', $event.value)">
               <mat-option value="solid">Solid</mat-option>
               <mat-option value="dashed">Dashed</mat-option>
               <mat-option value="dotted">Dotted</mat-option>
@@ -65,7 +103,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Font Weight</mat-label>
-            <mat-select [value]="selectedElement.style['font-weight'] || ''" (selectionChange)="updateStyle('font-weight', $event)">
+            <mat-select [value]="selectedElement.style['font-weight'] || ''" (selectionChange)="updateStyle('font-weight', $event.value)">
               <mat-option value="normal">Normal</mat-option>
               <mat-option value="bold">Bold</mat-option>
             </mat-select>

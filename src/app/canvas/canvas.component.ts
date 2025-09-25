@@ -50,20 +50,14 @@ export class CanvasComponent {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      const itemType = event.previousContainer.data[event.previousIndex] as string;
+      const itemType = event.previousContainer.data[event.previousIndex] as 'button' | 'input' | 'label' | 'textarea';
       const dropPoint = this.getDropPoint(event.dropPoint.x, event.dropPoint.y);
-      const component = this.getComponentByType(itemType);
-
-      if (!component) {
-        return;
-      }
 
       const newElement: Item = {
-        id: Date.now(),
+        id: Date.now().toString(),
         name: `New ${itemType}`,
         label: `New ${itemType}`,
         type: itemType,
-        component: component,
         position: {
           x: dropPoint.x,
           y: dropPoint.y
@@ -83,8 +77,7 @@ export class CanvasComponent {
           color: '#000000',
           'font-size': '16px',
           'font-weight': 'normal'
-        },
-        text: `New ${itemType}`
+        }
       };
 
       this.items.update(currentItems => [...currentItems, newElement]);

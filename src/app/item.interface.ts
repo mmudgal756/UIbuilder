@@ -1,36 +1,20 @@
 export interface Item {
-  id: number;
+  id: string;
   name: string;
-  type: string;
-  label:string;
-  component: any;
+  type: 'button' | 'input' | 'label' | 'textarea';
   position: { x: number; y: number };
+  style: { [key: string]: string };
   inputs: {
     text?: string;
-    placeholder?: string;
+    color?: string;
     disabled?: boolean;
-    buttonType?: 'button' | 'submit';
-    loading?: boolean;
-    formDataKey?: string;
-    onClickCode?: string;
-    color?: string;
+    placeholder?: string;
+    [key: string]: any;
   };
-  style: {
-    width?: string;
-    height?: string;
-    'height.px'?: number;
-    'background-color'?: string;
-    'border-color'?: string;
-    'border-width'?: string;
-    'border-style'?: string;
-    color?: string;
-    'font-size'?: string;
-    'font-weight'?: string;
-    margin?: 'normal' | 'none';
-    'text-align'?: 'left' | 'center' | 'right' | 'justify';
-    left?: string;
-    top?: string;
-  };
-  text: string;
-  zIndex?: number;
+  label?: string;
+  action?: 'customJavaScript' | 'apiCall';
+  apiUrl?: string;
+  httpMethod?: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  requestBody?: string;
+  customJavaScript?: string;
 }

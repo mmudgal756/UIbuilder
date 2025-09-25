@@ -1,8 +1,8 @@
-<div [style.width]="item().style.width"
-     [style.height]="item().style.height"
+<div [style.width]="item().style['width']"
+     [style.height]="item().style['height']"
      [style.fontSize]="item().style['font-size']"
      [style.fontWeight]="item().style['font-weight']"
      [style.textAlign]="item().style['text-align']"
      [class.selected]="selected()">
-    {{ item().inputs.text }}
+    {{ item().inputs['text'] }}
 </div>

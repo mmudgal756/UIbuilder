@@ -31,7 +31,7 @@ export class PropertiesPanelComponent {
   private elementNamingService = inject(ElementNamingService);
   elementName = this.elementNamingService.elementName;
 
-  updateProperty(property: keyof Item, event: Event) {
+  updateInput(property: keyof Item, event: Event) {
     const el = this.element();
     if (el) {
       const value = (event.target as HTMLInputElement).value;
@@ -39,27 +39,34 @@ export class PropertiesPanelComponent {
     }
   }
 
-  updateInput(input: string, event: Event) {
+  updateInputs(key: keyof Item['inputs'], event: Event) {
     const el = this.element();
     if (el) {
       const value = (event.target as HTMLInputElement).value;
-      this.element.set({ ...el, inputs: { ...el.inputs, [input]: value } });
+      const updatedInputs = { ...el.inputs, [key]: value };
+      this.element.set({ ...el, inputs: updatedInputs });
+    }
+  }
+
+  updateAction(event: any) {
+    const el = this.element();
+    if (el) {
+      this.element.set({ ...el, action: event.value });
+    }
+  }
+
+  updateHttpMethod(event: any) {
+    const el = this.element();
+    if (el) {
+      this.element.set({ ...el, httpMethod: event.value });
     }
   }
 
   updateStyle(style: string, event: any) {
     const el = this.element();
     if (el) {
-      const value = event.target ? (event.target as HTMLInputElement).value : event.value;
+      const value = event.target ? (event.target as HTMLInputElement).value : event;
       this.element.set({ ...el, style: { ...el.style, [style]: value } });
-    }
-  }
-
-  updateButtonColor(event: any) {
-    const el = this.element();
-    if (el) {
-      const color = event.checked ? 'primary' : '';
-      this.element.set({ ...el, inputs: { ...el.inputs, color: color } });
     }
   }
 }
