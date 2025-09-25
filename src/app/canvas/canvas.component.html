@@ -1,11 +1,13 @@
 <div class="canvas-container" 
      id="canvas-drop-list"
      cdkDropList 
+     [cdkDropListDisabled]="previewMode()"
      [cdkDropListData]="items()" 
      (cdkDropListDropped)="onDrop($event)" 
      (click)="deselectElement()">
   @for (item of items(); track item.id) {
     <div cdkDrag 
+         [cdkDragDisabled]="previewMode()"
          [cdkDragFreeDragPosition]="item.position" 
          (cdkDragEnded)="onElementDragEnded($event, item)" 
          (click)="selectElement(item, $event)" 

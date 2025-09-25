@@ -43,6 +43,10 @@ export class CanvasComponent {
   }
 
   onDrop(event: CdkDragDrop<any[]>) {
+    if (this.previewMode()) {
+      return;
+    }
+
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -100,6 +104,9 @@ export class CanvasComponent {
   }
 
   onElementDragEnded(event: CdkDragEnd, item: Item) {
+    if (this.previewMode()) {
+      return;
+    }
     const newPosition = event.source.getFreeDragPosition();
     const snappedX = Math.round(newPosition.x / 20) * 20;
     const snappedY = Math.round(newPosition.y / 20) * 20;
