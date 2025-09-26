@@ -1,0 +1,11 @@
+<div [innerHTML]="safeHtml()" 
+     [style.width]="item().style['width']" 
+     [style.height]="item().style['height']" 
+     [style.background-color]="item().style['background-color']"
+     [style.border-color]="item().style['border-color']"
+     [style.border-width]="item().style['border-width']"
+     [style.border-style]="item().style['border-style']"
+     [style.color]="item().style['color']"
+     [style.font-size]="item().style['font-size']"
+     [style.font-weight]="item().style['font-weight']"
+     [class.selected]="selected() && !previewMode()"></div>

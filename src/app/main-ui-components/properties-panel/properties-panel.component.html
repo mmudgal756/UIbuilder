@@ -59,6 +59,19 @@
           }
         }
 
+        @if (selectedElement.type === 'custom-html') {
+          <mat-form-field appearance="fill" class="properties-section">
+            <mat-label>Custom HTML</mat-label>
+            <textarea matInput
+              class="code-editor"
+              [value]="selectedElement.inputs.customHtml"
+              (input)="updateInputs('customHtml', $event)"
+              [disabled]="previewMode()"
+              placeholder="Enter custom HTML">
+            </textarea>
+          </mat-form-field>
+        }
+
         <h4 class="mat-h4">Styles</h4>
 
         <div class="style-grid">

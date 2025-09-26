@@ -1,7 +1,7 @@
 export interface Item {
   id: string;
   name: string;
-  type: 'button' | 'input' | 'label' | 'textarea';
+  type: 'button' | 'input' | 'label' | 'textarea' | 'custom-html';
   position: { x: number; y: number };
   style: { [key: string]: string };
   inputs: {
@@ -9,6 +9,7 @@ export interface Item {
     color?: string;
     disabled?: boolean;
     placeholder?: string;
+    customHtml?: string;
     [key: string]: any;
   };
   label?: string;
