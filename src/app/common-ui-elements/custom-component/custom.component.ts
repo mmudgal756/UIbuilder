@@ -5,13 +5,13 @@ import { Item } from '../../interface/item.interface';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-custom-html',
-  templateUrl: './custom-html.html',
-  styleUrls: ['./custom-html.css'],
+  selector: 'app-custom-component',
+  templateUrl: './custom.component.html',
+  styleUrls: ['./custom.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule]
 })
-export class CustomHtmlComponent {
+export class CustomComponent {
   item = input.required<Item>();
   selected = input.required<boolean>();
   previewMode = input.required<boolean>();

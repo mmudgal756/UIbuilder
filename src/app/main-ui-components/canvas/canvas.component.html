@@ -26,8 +26,8 @@
         @case ('textarea') {
           <app-textarea [item]="item" [selected]="selectedElement()?.id === item.id" [previewMode]="previewMode()"></app-textarea>
         }
-        @case ('custom-html') {
-          <app-custom-html [item]="item" [selected]="selectedElement()?.id === item.id" [previewMode]="previewMode()"></app-custom-html>
+        @case ('custom-component') {
+          <app-custom-component [item]="item" [selected]="selectedElement()?.id === item.id" [previewMode]="previewMode()"></app-custom-component>
         }
       }
     </div>

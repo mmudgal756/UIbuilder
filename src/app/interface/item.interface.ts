@@ -1,7 +1,7 @@
 export interface Item {
   id: string;
   name: string;
-  type: 'button' | 'input' | 'label' | 'textarea' | 'custom-html';
+  type: 'button' | 'input' | 'label' | 'textarea' | 'custom-component';
   position: { x: number; y: number };
   style: { [key: string]: string };
   inputs: {

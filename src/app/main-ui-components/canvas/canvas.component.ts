@@ -6,7 +6,7 @@ import { ButtonComponent } from '../../common-ui-elements/button/button.componen
 import { InputComponent } from '../../common-ui-elements/input/input.component';
 import { LabelComponent } from '../../common-ui-elements/label/label.component';
 import { TextareaComponent } from '../../common-ui-elements/textarea/textarea.component';
-import { CustomHtmlComponent } from '../../common-ui-elements/custom-html/custom-html';
+import { CustomComponent } from '../../common-ui-elements/custom-component/custom.component';
 
 @Component({
   selector: 'app-canvas',
@@ -20,7 +20,7 @@ import { CustomHtmlComponent } from '../../common-ui-elements/custom-html/custom
     InputComponent,
     LabelComponent,
     TextareaComponent,
-    CustomHtmlComponent
+    CustomComponent
   ]
 })
 export class CanvasComponent {
@@ -39,8 +39,8 @@ export class CanvasComponent {
         return LabelComponent;
       case 'textarea':
         return TextareaComponent;
-      case 'custom-html':
-        return CustomHtmlComponent;
+      case 'custom-component':
+        return CustomComponent;
       default:
         return null;
     }
@@ -54,7 +54,7 @@ export class CanvasComponent {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      const itemType = event.previousContainer.data[event.previousIndex] as 'button' | 'input' | 'label' | 'textarea' | 'custom-html';
+      const itemType = event.previousContainer.data[event.previousIndex] as 'button' | 'input' | 'label' | 'textarea' | 'custom-component';
       const dropPoint = this.getDropPoint(event.dropPoint.x, event.dropPoint.y);
 
       const newElement: Item = {

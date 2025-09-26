@@ -19,6 +19,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   ]
 })
 export class ToolboxComponent {
-  toolboxItems = ['button', 'input', 'label', 'textarea', 'custom-html'];
+  toolboxItems = ['button', 'input', 'label', 'textarea', 'custom-component'];
   previewMode = input.required<boolean>();
 }
