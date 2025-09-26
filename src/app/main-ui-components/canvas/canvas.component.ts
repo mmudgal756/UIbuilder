@@ -68,7 +68,7 @@ export class CanvasComponent {
         style: {
           left: `${dropPoint.x}px`,
           top: `${dropPoint.y}px`,
-          width: '150px',
+          width: '250px',
           height: '50px',
           'background-color': '#ffffff',
           'border-color': '#000000',
