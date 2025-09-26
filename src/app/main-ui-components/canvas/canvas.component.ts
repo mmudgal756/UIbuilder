@@ -55,7 +55,15 @@ export class CanvasComponent {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       const itemType = event.previousContainer.data[event.previousIndex] as 'button' | 'input' | 'label' | 'textarea' | 'custom-component';
-      const dropPoint = this.getDropPoint(event.dropPoint.x, event.dropPoint.y);
+      
+      // Get the exact drop position relative to the canvas
+      const canvasRect = this.elementRef.nativeElement.getBoundingClientRect();
+      const exactX = event.dropPoint.x - canvasRect.left;
+      const exactY = event.dropPoint.y - canvasRect.top;
+      
+      // Apply grid snapping (optional - can be removed for exact positioning)
+      const snappedX = Math.round(exactX / 20) * 20;
+      const snappedY = Math.round(exactY / 20) * 20;
 
       const newElement: Item = {
         id: Date.now().toString(),
@@ -63,16 +71,16 @@ export class CanvasComponent {
         label: `New ${itemType}`,
         type: itemType,
         position: {
-          x: dropPoint.x,
-          y: dropPoint.y
+          x: snappedX,
+          y: snappedY
         },
         inputs: {
           text: `New ${itemType}`,
           customHtml: '<p>Custom HTML</p>'
         },
         style: {
-          left: `${dropPoint.x}px`,
-          top: `${dropPoint.y}px`,
+          left: `${snappedX}px`,
+          top: `${snappedY}px`,
           width: '250px',
           height: '100px',
           'background-color': '#ffffff',
@@ -90,16 +98,6 @@ export class CanvasComponent {
     }
   }
 
-  private getDropPoint(dropX: number, dropY: number) {
-    const canvasRect = this.elementRef.nativeElement.getBoundingClientRect();
-    const x = dropX - canvasRect.left;
-    const y = dropY - canvasRect.top;
-
-    const snappedX = Math.round(x / 20) * 20;
-    const snappedY = Math.round(y / 20) * 20;
-
-    return { x: snappedX, y: snappedY };
-  }
 
   onElementDragEnded(event: CdkDragEnd, item: Item) {
     if (this.previewMode()) {

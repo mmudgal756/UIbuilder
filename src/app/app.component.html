@@ -1,5 +1,5 @@
 <div class="container">
-    <app-header [(previewMode)]="previewMode" />
+    <app-header [(previewMode)]="previewMode" (clearCanvasEvent)="clearCanvas()" />
     <main class="main-content">
       <app-toolbox [previewMode]="previewMode()"/>
       <app-canvas [(items)]="items" [(selectedElement)]="selectedElement" [previewMode]="previewMode()"/>

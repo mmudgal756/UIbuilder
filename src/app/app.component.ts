@@ -8,6 +8,8 @@ import { ToolboxComponent } from './main-ui-components/toolbox/toolbox.component
 import { Item } from './interface/item.interface';
 import { HeaderComponent } from "./main-ui-components/header/header.component";
 import { PropertiesPanelComponent } from "./main-ui-components/properties-panel/properties-panel.component";
+import { StorageService } from './services/storage.service';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +32,22 @@ export class AppComponent {
   selectedElement = signal<Item | null>(null);
   previewMode = signal(false);
 
+  private storageService = inject(StorageService);
+
   constructor() {
+    // Load components from localStorage on initialization
+    const savedComponents = this.storageService.loadComponents();
+    if (savedComponents.length > 0) {
+      this.items.set(savedComponents);
+    }
+
+    // Save components to localStorage whenever items change
+    effect(() => {
+      const currentItems = this.items();
+      this.storageService.saveComponents(currentItems);
+    });
+
+    // Update items when selectedElement changes
     effect(() => {
       const selected = this.selectedElement();
       if (selected) {
@@ -39,5 +56,11 @@ export class AppComponent {
         );
       }
     });
+  }
+
+  clearCanvas() {
+    this.items.set([]);
+    this.selectedElement.set(null);
+    this.storageService.clearComponents();
   }
 }

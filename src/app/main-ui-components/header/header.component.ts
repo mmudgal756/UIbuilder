@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, model, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,8 +20,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class HeaderComponent {
   previewMode = model.required<boolean>();
+  clearCanvasEvent = output<void>();
 
   togglePreviewMode() {
     this.previewMode.set(!this.previewMode());
+  }
+
+  clearCanvas() {
+    if (confirm('Are you sure you want to clear all components? This action cannot be undone.')) {
+      this.clearCanvasEvent.emit();
+    }
   }
 }

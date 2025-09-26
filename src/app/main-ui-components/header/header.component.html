@@ -2,6 +2,9 @@
   <mat-icon>design_services</mat-icon>
   <span class="title">UI Builder</span>
   <span class="spacer"></span>
+  <button mat-icon-button (click)="clearCanvas()" matTooltip="Clear Canvas">
+    <mat-icon>clear_all</mat-icon>
+  </button>
   <button mat-icon-button (click)="togglePreviewMode()" [matTooltip]="previewMode() ? 'Switch to Edit Mode' : 'Switch to Preview Mode'">
     <mat-icon>{{ previewMode() ? 'visibility_off' : 'visibility' }}</mat-icon>
   </button>
